@@ -41,10 +41,6 @@ SC_MODULE(add_sub) {
 			temp0 = temp1;
 			sum_s[i] = fulladder(ain.read()[0], inb[0], temp0, temp1);
 		}
-		// sum_s[0] = fulladder(ain.read()[0], inb[0], ci.read(), co0);
-		// sum_s[1] = fulladder(ain.read()[1], inb[1], co0, co1);
-		// sum_s[2] = fulladder(ain.read()[2], inb[2], co1, co2);
-		// sum_s[3] = fulladder(ain.read()[3], inb[3], co2, co3);
 
 		bool tempi0 = false;
 		bool tempi1 = false;
@@ -52,16 +48,12 @@ SC_MODULE(add_sub) {
 			tempi0 = tempi1;
 			sum_f[i] = fulladder(sum_s[0], one[0], tempi0, tempi1);
 		}
-		// sum_f[0] = fulladder(sum_s[0], one[0], false, coi0);
-		// sum_f[1] = fulladder(sum_s[1], one[1], coi0, coi1);
-		// sum_f[2] = fulladder(sum_s[2], one[2], coi1, coi2);
-		// sum_f[3] = fulladder(sum_s[3], one[3], coi2, coi3);
 
 		sum.write(sum_f);
 		co.write(temp1);
 
 		oflag.write(temp1);
-		zflag.write(!(sum_f[0] || sum_f[1] || sum_f[2] || sum_f[3] || sum_f[4] || sum_f[5] || sum_f[6] || sum_f[7] || sum_f[8] || sum_f[9] || sum_f[10] || sum_f[11] || sum_f[12] || sum_f[13]|| sum_f[14] || sum_f[15] ));
+		zflag.write(!(sum_f[0] || sum_f[1] || sum_f[2] || sum_f[3] || sum_f[4] || sum_f[5] || sum_f[6] || sum_f[7] || sum_f[8] || sum_f[9] || sum_f[10] || sum_f[11] || sum_f[12] || sum_f[13] || sum_f[14] || sum_f[15]));
 		lflag.write(!temp1);
 	}
 

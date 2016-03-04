@@ -10,60 +10,53 @@
 #include <systemc.h>
 
 SC_MODULE(stim) {
-    sc_in<bool> clk;
-    sc_out<sc_uint<16> > ain, bin;
-    sc_out<bool> ci,as;
+	sc_in<bool> clk;
+	sc_out<sc_uint<16> > ain, bin;
+	sc_out<sc_uint<4> > op;
+	void ps1() {
 
-    void ps1() {
+		ain.write(0b0000000000000000);
+		bin.write(0b0000000000000000);
+		op.write(0b0000);
+		wait();
 
-        ain.write("0b0000000000000000");
-        bin.write("0b0000000000000000");
-        as.write(true);
-        ci.write(false);
-        wait();
+		ain.write(0b0000000000000100);
+		bin.write(0b0000000000000011);
 
-        // ain.write("0b0001");
-        // bin.write("0b0101");
-        // as.write(false);
-        // ci.write(false);
-        // wait();
-        //
-        // ain.write("0b0001");
-        // bin.write("0b0101");
-        // as.write(true);
-        // ci.write(false);
-        // wait();
-        //
-        // ain.write("0b0100");
-        // bin.write("0b0001");
-        // as.write(false);
-        // ci.write(false);
-        // wait();
-        //
-        // ain.write("0b0100");
-        // bin.write("0b0001");
-        // as.write(true);
-        // ci.write(false);
-        // wait();
-        //
-        // ain.write("0b0001");
-        // bin.write("0b0001");
-        // as.write(false);
-        // ci.write(false);
-        // wait();
-        //
-        // ain.write("0b0001");
-        // bin.write("0b0001");
-        // as.write(true);
-        // ci.write(false);
-        // wait();
+		op.write(0b0000000000000000);
+		wait();
 
-        sc_stop();                          // End simulation
-    }
+		op.write(0b0000000000000001);
+		wait();
 
-    SC_CTOR(stim) {
-        SC_THREAD(ps1);                     // Run ps1 only ones
-        sensitive << clk.pos();
-    }
+		op.write(0b0000000000000010);
+
+		wait();
+
+		op.write(0b0000000000000011);
+
+		wait();
+
+		op.write(0b0000000000000100);
+
+		wait();
+
+		op.write(0b0000000000000101);
+
+		wait();
+
+
+		op.write(0b0000000000000110);
+
+		wait();
+
+
+		sc_stop();                          // End simulation
+	}
+
+	SC_CTOR(stim) {
+		SC_THREAD(ps1);                     // Run ps1 only ones
+		sensitive << clk.pos();
+	}
 };
 #endif
