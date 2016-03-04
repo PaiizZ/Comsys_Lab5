@@ -10,7 +10,7 @@
 #include <systemc.h>
 
 SC_MODULE(add_sub) {
-	sc_in<sc_uint<16> > ain, bin;
+	sc_in<sc_uint<16>> ain, bin;
 	sc_in<bool> ci, as;
 	sc_out<sc_uint<16> > sum;
 	sc_out<bool> co;
@@ -61,7 +61,7 @@ SC_MODULE(add_sub) {
 		co.write(temp1);
 
 		oflag.write(temp1);
-		zflag.write(!(sum_f[0] || sum_f[1] || sum_f[2] || sum_f[3] || sum_f[4] || sum_f[5] || sum_f[6] || sum_f[7] || sum_f[8] || sum_f[9] || sum_f[10] || sum_f[11] || sum_f[12] || sum_f[13]|| sum_f[14] || sum_f[15] ));
+		zflag.write(!(sum_f[0] || sum_f[1] || sum_f[2] || sum_f[3] || sum_f[4] || sum_f[5] || sum_f[6] || sum_f[7] || sum_f[8] || sum_f[9] || sum_f[10] || sum_f[11] || sum_f[12] || sum_f[13] || sum_f[14] || sum_f[15]));
 		lflag.write(!temp1);
 	}
 
