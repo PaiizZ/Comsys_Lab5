@@ -1,6 +1,6 @@
 //------------------------------------------------------------------
 // Simple Testbench for 4-bits adder file
-//
+// 
 // SystemC for VHDL engineers
 // (c)www.ht-lab.com
 //------------------------------------------------------------------
@@ -23,7 +23,11 @@ int sc_main(int argc, char* argv[])
 
 
 	sc_trace_file *fp;
+<<<<<<< HEAD
 	fp = sc_create_vcd_trace_file("wave");
+=======
+	fp = sc_create_vcd_trace_file("add_sub_wave");
+>>>>>>> 5ea8182b04707d2b722236a572d1b52d1ad485a3
 	fp->set_time_unit(1, SC_PS);
 	sc_trace(fp, ain, "ain");
 	sc_trace(fp, bin, "bin");
@@ -33,8 +37,11 @@ int sc_main(int argc, char* argv[])
 	sc_trace(fp, zflag, "zflag");
 	sc_trace(fp, oflag, "oflag");
 	sc_trace(fp, lflag, "lflag");
+<<<<<<< HEAD
 	sc_trace(fp, as , "as");
 	sc_trace(fp, control , "control");
+=======
+>>>>>>> 5ea8182b04707d2b722236a572d1b52d1ad485a3
 	sc_trace(fp, clk, "clk");
 
 	//add_sub DUT("add_sub");                 // Instantiate Device Under Test
@@ -65,6 +72,7 @@ int sc_main(int argc, char* argv[])
 	STIM.clk(clk);
 	STIM.ain(ain);
 	STIM.bin(bin);
+<<<<<<< HEAD
 	STIM.op(control);
 
 
@@ -82,6 +90,34 @@ int sc_main(int argc, char* argv[])
 	CHECK.control(control);
 
 
+=======
+	STIM.ci(ci);
+	STIM.as(as);
+
+	check CHECK("checker");             // Instantiate checker
+	CHECK.clk(clk);
+	CHECK.ain(ain);
+	CHECK.bin(bin);
+	CHECK.ci(ci);
+	CHECK.sum(sum);
+	CHECK.oflag(oflag);
+	CHECK.zflag(zflag);
+	CHECK.co(co);
+	CHECK.as(as);
+	CHECK.lflag(lflag);
+
+	
+
+
+	// ALU.sum_add(sum_add);
+	// ALU.sum_sub(sum_sub);
+	// ALU.sum_xor(sum_xor);
+	// ALU.sum_add(sum_add);
+	// ALU.sum_or(sum_or);
+	// ALU.sum_nota(sum_nota);
+	// ALU.sum_stl(sum_stl);
+
+>>>>>>> 5ea8182b04707d2b722236a572d1b52d1ad485a3
 	sc_start(100, SC_NS);               // Run simulation
 
 	return 0;                           // Return OK, no errors.

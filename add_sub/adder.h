@@ -10,7 +10,7 @@
 #include <systemc.h>
 
 SC_MODULE(add_sub) {
-	sc_in<sc_uint<16> > ain, bin;
+	sc_in<sc_uint<16>> ain, bin;
 	sc_in<bool> ci, as;
 	sc_out<sc_uint<16> > sum;
 	sc_out<bool> co;
