@@ -1,6 +1,6 @@
 //------------------------------------------------------------------
 // Simple Testbench for 4-bits adder file
-// 
+//
 // SystemC for VHDL engineers
 // (c)www.ht-lab.com
 //------------------------------------------------------------------
@@ -23,7 +23,7 @@ int sc_main(int argc, char* argv[])
 
 
 	sc_trace_file *fp;
-	fp = sc_create_vcd_trace_file("add_sub_wave");
+	fp = sc_create_vcd_trace_file("wave");
 	fp->set_time_unit(1, SC_PS);
 	sc_trace(fp, ain, "ain");
 	sc_trace(fp, bin, "bin");
@@ -33,6 +33,8 @@ int sc_main(int argc, char* argv[])
 	sc_trace(fp, zflag, "zflag");
 	sc_trace(fp, oflag, "oflag");
 	sc_trace(fp, lflag, "lflag");
+	sc_trace(fp, as , "as");
+	sc_trace(fp, control , "control");
 	sc_trace(fp, clk, "clk");
 
 	//add_sub DUT("add_sub");                 // Instantiate Device Under Test
@@ -72,22 +74,13 @@ int sc_main(int argc, char* argv[])
 	CHECK.bin(bin);
 	CHECK.ci(ci);
 	CHECK.sum(sum);
-	CHECK.oflag(oflag);
-	CHECK.zflag(zflag);
 	CHECK.co(co);
 	CHECK.as(as);
+	CHECK.oflag(oflag);
+	CHECK.zflag(zflag);
 	CHECK.lflag(lflag);
+	CHECK.control(control);
 
-	
-
-
-	// ALU.sum_add(sum_add);
-	// ALU.sum_sub(sum_sub);
-	// ALU.sum_xor(sum_xor);
-	// ALU.sum_add(sum_add);
-	// ALU.sum_or(sum_or);
-	// ALU.sum_nota(sum_nota);
-	// ALU.sum_stl(sum_stl);
 
 	sc_start(100, SC_NS);               // Run simulation
 

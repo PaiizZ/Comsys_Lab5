@@ -17,10 +17,10 @@ SC_MODULE(stim) {
 
 		ain.write(0b0000000000000000);
 		bin.write(0b0000000000000000);
-		op.write(0b0000);
+		op.write(0b0000000000000000);
 		wait();
 
-		ain.write(0b0000000000000100);
+		ain.write(0b0000000000000110);
 		bin.write(0b0000000000000011);
 
 		op.write(0b0000000000000000);

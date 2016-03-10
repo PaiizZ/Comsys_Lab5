@@ -1,5 +1,5 @@
-#ifndef ALU_H
-#define ALU_H
+#ifndef ALU
+#define ALU
 
 #include <systemc.h>
 #include "adder.h"
@@ -94,8 +94,9 @@ SC_MODULE(alu) {
 		SUBB.zflag(zflagB);
 		SUBB.oflag(oflagB);
 		SUBB.lflag(lflagB);
+
 		SC_METHOD(run);
-		sensitive << ain << bin << ciA << as << control;
+		sensitive << control;
 	}
 
 

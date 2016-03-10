@@ -33,21 +33,22 @@ SC_MODULE(add_sub) {
 		for (int i = 0; i < 16; i++) {
 			inb[i] = inb[i] ^ as;
 		}
-		sc_uint<4> one;
+		sc_uint<16> one;
 		one[0] = as;
 		bool temp0 = false;
 		bool temp1 = ci.read();
 		for (int i = 0; i < 16; i++) {
 			temp0 = temp1;
-			sum_s[i] = fulladder(ain.read()[0], inb[0], temp0, temp1);
+			sum_s[i] = fulladder(ain.read()[i], inb[i], temp0, temp1);
 		}
 
 		bool tempi0 = false;
 		bool tempi1 = false;
 		for (int i = 0; i < 16; i++) {
 			tempi0 = tempi1;
-			sum_f[i] = fulladder(sum_s[0], one[0], tempi0, tempi1);
+			sum_f[i] = fulladder(sum_s[i], one[i], tempi0, tempi1);
 		}
+
 
 		sum.write(sum_f);
 		co.write(temp1);
